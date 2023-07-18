@@ -1,20 +1,33 @@
+# Specify version of docker compose
 version: "3.7"
 services:
+  # Specify item-app service
   item-app:
+    # Define the image
     image: ghcr.io/dhanifudin/a433-microservices:v1
+    # Define restart policy, it also can help when the container fail to
+    # connect to monggo before the container is ready
     restart: on-failure
+    # map local port 80 into container port 8080
     ports:
       - 80:8080
+      # set the working directory
     working_dir: /app
     volumes:
       - ./:/app
+      # Define the environment variable
     environment:
       NODE_ENV: production
       DB_HOST: item-db
   item-db:
+    # Define the image of mongo
     image: mongo:3
+    # Specify restart policy
     restart: on-failure
+    # Define map volume between local and container
     volumes:
       - app-db:/data/db
+
+# Define the volume name
 volumes:
   app-db:
