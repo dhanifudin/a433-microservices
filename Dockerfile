@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy files from project into container
 COPY . .
 
+# Set env into production mode and database
+ENV NODE_ENV=production DB_HOST=item-db
+
 # Run node packages installation and build the project
 RUN npm install --production --unsafe-perm -y && npm run build
 

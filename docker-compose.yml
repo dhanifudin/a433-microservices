@@ -5,6 +5,8 @@ services:
   item-app:
     # Define the image
     image: ghcr.io/dhanifudin/a433-microservices:v1
+    depends_on:
+      - item-db
     # Define restart policy, it also can help when the container fail to
     # connect to monggo before the container is ready
     restart: on-failure
@@ -27,7 +29,6 @@ services:
     # Define map volume between local and container
     volumes:
       - app-db:/data/db
-
 # Define the volume name
 volumes:
   app-db:
