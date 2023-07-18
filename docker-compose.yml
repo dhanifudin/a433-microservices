@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   item-app:
-    image: dhanifudin/item-app:v1
+    image: ghcr.io/dhanifudin/a433-microservices:v1
     restart: on-failure
     ports:
       - 80:8080
