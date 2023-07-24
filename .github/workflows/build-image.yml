@@ -15,7 +15,7 @@ jobs:
           docker run --rm -i hadolint/hadolint < Dockerfile
   build-app-karsajobs-ui:
     runs-on: ubuntu-latest
-    needs: [lint-dockerfile, test-app]
+    needs: [lint-dockerfile]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
